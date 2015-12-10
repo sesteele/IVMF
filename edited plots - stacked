@@ -1,0 +1,56 @@
+Copy.of.Nov_2015_full.clip.report <- read.csv("~/R/PAI 730/Copy of Nov_2015_full clip report.csv")
+View(Copy.of.Nov_2015_full.clip.report)
+# Rename to make coding easier
+IVMF.NOV <- Copy.of.Nov_2015_full.clip.report
+#subset data by "Boots to Business"
+b2b.dat <- subset(IVMF.NOV, grepl("+Boots to Business", IVMF.NOV$Keywords))
+View(b2b.dat)
+#calculate total unique visitors for novemeber 
+B2B.UN.Nov <- sum(b2b.dat$Circulation..Unique.Visitors, na.rm = T)
+#subset data by EBVD
+ebvd.dat <- subset(IVMF.NOV, grepl("+Entrepreneurship Bootcamp for Veterans with Disabilities", IVMF.NOV$Keywords))
+#calculate total unique visitors for novemeber 
+ebvd.UN.Nov <- sum(ebvd.dat$Circulation..Unique.Visitors, na.rm = T)
+#subset data by VMISE
+vmise.dat <- subset(IVMF.NOV, grepl("+Veteran Women Igniting the Spirit of Entrepreneurship", IVMF.NOV$Keywords))
+View(vmise.dat)
+#calculate total unique visitors for novemeber 
+vmise.UN.Nov <- sum(vmise.dat$Circulation..Unique.Visitors, na.rm = T)
+#subset data by O2O
+o2o.dat <- subset(IVMF.NOV, grepl("+Onward to Opportunity", IVMF.NOV$Keywords))
+View(o2o.dat)
+#calculate total unique visitors for novemeber 
+o2o.UN.Nov <- sum(o2o.dat$Circulation..Unique.Visitors, na.rm = T)
+
+#calculate total Potential Viewership for novemeber 
+B2B.PV.Nov <- sum(b2b.dat$Circulation..Potential.Viewership, na.rm = T)
+
+#calculate total PV for novemeber 
+ebvd.PV.Nov <- sum(ebvd.dat$Circulation..Potential.Viewership, na.rm = T)
+
+#calculate total PV for novemeber 
+vmise.PV.Nov <- sum(vmise.dat$Circulation..Potential.Viewership, na.rm = T)
+
+#calculate total PV for novemeber 
+o2o.PV.Nov <- sum(o2o.dat$Circulation..Potential.Viewership, na.rm = T)
+
+# data matrix generation
+data <- structure(list("Boots to Business"= c(B2B.UN.Nov, B2B.Pv.Nov), "Entrepreneurship Bootcamp for Veterans with Disabilities"
+                       = c(ebvd.UN.Nov, ebvd.PV.Nov), "Onward to Opportunity" = c(o2o.UN.Nov, o2o.PV.Nov),"Veteran Women Igniting the Spirit of Entrepreneurship" = c(vmise.UN.Nov, vmise.PV.Nov)), 
+                  .Names = c("Boots to Business", "EBV", "O2O", "V-WISE"), class = "data.frame", row.names = c(NA, -2L))
+attach(data)
+print(data)
+# Barplot generation 
+colours <- c("royalblue4", "royalblue1")
+barplot(as.matrix(data), main="November Comms Report", ylab = "Viewership",horiz = F, cex.lab = 1.5, cex.main = 1.4, beside=TRUE, col=colours)
+#Legend
+legend(bottom, c("Potential Viewership", "Unique Visitors"))
+
+segments( y0 = 200000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+segments( y0 = 400000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+segments( y0 = 600000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+segments( y0 = 800000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+segments( y0 = 1000000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+segments( y0 = 1200000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
+
+
