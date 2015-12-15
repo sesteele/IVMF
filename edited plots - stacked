@@ -42,29 +42,22 @@ data <- structure(list("Boots to Business"= c(B2B.UN.Nov, B2B.PV.Nov), "Entrepre
 attach(data)
 print(data)
 # Barplot generation 
-
 colours <- c("royalblue4", "royalblue1")
-barplot(as.matrix(data), main="November Comms Report", ylab = "Viewership (in millions)",horiz = F, cex.lab = 1.2, cex.main = 1.5, beside=TRUE, col=colours, yaxt = "n", xlim = c(-2,20))
+barplot(as.matrix(data), main="November Communications Report", ylab = "Viewership (in millions)",horiz = F, cex.lab = 1.2, cex.main = 1.5, beside=TRUE, col=colours, yaxt = "n", xlim = c(-2,20))
+abline(h=c(200000000,400000000, 600000000, 800000000, 1000000000, 1200000000 ), lty = 3, col=gray(.75))
 
-
+barplot(as.matrix(data), main="November Communications Report", ylab = "Viewership (in millions)",horiz = F, cex.lab = 1.2, cex.main = 1.5, beside=TRUE, col=colours, yaxt = "n", xlim = c(-2,20), add = T)
 #Legend
 legend(bottom, c("Potential Viewership", "Unique Visitors"))
 
-segments( y0 = 200000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
-segments( y0 = 400000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
-segments( y0 = 600000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
-segments( y0 = 800000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
-segments( y0 = 1000000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
-segments( y0 = 1200000000, x0 = 0, x1 = 2010, col=gray(.75), cex=.8, lty=3 )
 
 
-
-text( x=-1, y=200000000, "200", col="gray", cex=1)
-text( x=-1, y=400000000, "400", col="gray", cex=1)
-text( x=-1, y=600000000, "600", col="gray", cex=1)
-text( x=-1, y=800000000, "800", col="gray", cex=1)
-text( x=-1, y=1000000000, "1000", col="gray", cex=1)
-text( x=-1, y=1200000000, "1200", col="gray", cex=1)
+text( x=-1, y=220000000, "200", col="gray", cex=1)
+text( x=-1, y=420000000, "400", col="gray", cex=1)
+text( x=-1, y=620000000, "600", col="gray", cex=1)
+text( x=-1, y=820000000, "800", col="gray", cex=1)
+text( x=-1, y=1020000000, "1000", col="gray", cex=1)
+text( x=-1, y=1220000000, "1200", col="gray", cex=1)
 
 text( x=1.5, y=334734151, "315", col="black", cex=1)
 text( x=4.5, y=127229201, "101", col="black", cex=1)
@@ -75,3 +68,6 @@ points(12, 700000000, col="royalblue4", pch=19)
 points(12, 750000000, col="royalblue1", pch=19)
 text( x=13.5, y=700000000, "Unique Visitors", col="royalblue4")
 text( x=13.85, y=750000000, "Potential Viewership", col="royalblue1")
+
+
+
